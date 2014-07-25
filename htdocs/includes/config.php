@@ -1,6 +1,6 @@
 <?php
 $_CONFIG = array(
-	'urlbase'=>'/farmassistant',
+	'urlbase'=>'/archeagefarmer',
 	'version'=>1,
 	'staticurl'=>'static',
 	'db'=>array(
@@ -9,7 +9,7 @@ $_CONFIG = array(
 		'username'=>'root',
 		'password'=>'',
 		),
+	'debug'=>true,
 	'twig'=>array(
-		'debug'=>true,
 		),
 	);

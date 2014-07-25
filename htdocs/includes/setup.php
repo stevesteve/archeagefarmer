@@ -14,7 +14,7 @@ $whoops->register();
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader, array(
-    'debug' => $_CONFIG['twig']['debug'],
+    'debug' => $_CONFIG['debug'],
 ));
 
 // initial twig context
