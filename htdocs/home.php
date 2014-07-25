@@ -3,6 +3,7 @@
 $PAGEID = 'home';
 $guarded = true;
 require 'includes/setup.php';
+require 'includes/database.php';
 
 $stmt = $db->prepare('SELECT * FROM `seed` ORDER BY `name`');
 $stmt->execute();

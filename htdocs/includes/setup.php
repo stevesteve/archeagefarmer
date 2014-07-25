@@ -9,7 +9,6 @@ if (isset($guarded)&&$guarded===true) {
 }
 
 require $ROOTDIR.'/vendor/autoload.php';
-require $ROOTDIR.'/includes/database.php';
 
 // initiating whoops
 $whoops = new \Whoops\Run;
