@@ -2,6 +2,7 @@
 $_CONFIG = array(
 	'urlbase'=>'/archeagefarmer',
 	'version'=>1,
+	'forbidden_redirect'=>'login',
 	'staticurl'=>'static',
 	'db'=>array(
 		'dbhost'=>'localhost',

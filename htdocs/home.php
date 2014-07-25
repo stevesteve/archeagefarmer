@@ -1,14 +1,11 @@
 <?php
 
-error_reporting(E_ALL);
-
-
-
-$PAGEROOT = 'home';
+$PAGEID = 'home';
+$guarded = true;
 require 'includes/setup.php';
 
 $stmt = $db->prepare('SELECT * FROM `seed` ORDER BY `name`');
 $stmt->execute();
 $twigcontext['seeds'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo $twig->render('home.twig', $twigcontext);
+require 'includes/render.php';

@@ -1,9 +1,15 @@
 <?php
 
-$ROOTDIR = dirname(dirname(__FILE__)).'/';
-require $ROOTDIR.'vendor/autoload.php';
-require $ROOTDIR.'includes/config.php';
-require $ROOTDIR.'includes/database.php';
+$ROOTDIR = dirname(dirname(__FILE__));
+
+require $ROOTDIR.'/includes/config.php';
+session_start();
+if (isset($guarded)&&$guarded===true) {
+	require 'guardian.php';
+}
+
+require $ROOTDIR.'/vendor/autoload.php';
+require $ROOTDIR.'/includes/database.php';
 
 // initiating whoops
 $whoops = new \Whoops\Run;
@@ -19,7 +25,7 @@ $twig = new Twig_Environment($loader, array(
 
 // initial twig context
 $twigcontext = array(
-	'pageroot'=>$PAGEROOT,
+	'pageid'=>$PAGEID,
 	'urlbase'=>$_CONFIG['urlbase'],
 	'staticurl'=>$_CONFIG['urlbase'].'/'.$_CONFIG['staticurl'],
 	);
