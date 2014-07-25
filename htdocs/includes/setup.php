@@ -26,5 +26,6 @@ $twig = new Twig_Environment($loader, array(
 $twigcontext = array(
 	'pageid'=>$PAGEID,
 	'urlbase'=>$_CONFIG['urlbase'],
+	'auth'=>array_key_exists('auth', $_SESSION)?$_SESSION['auth']:false,
 	'staticurl'=>$_CONFIG['urlbase'].'/'.$_CONFIG['staticurl'],
 	);

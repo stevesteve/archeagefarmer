@@ -16,5 +16,11 @@
 			<li><a href="{{ urlbase }}/">Home</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
+			{% if auth %}
+			<li><a href="{{ urlbase }}/logout">Logout</a></li>
+			{% else %}
+			<li><a href="{{ urlbase }}/login">Login</a></li>
+			{% endif %}
+		</ul>
 	</div><!-- /.navbar-collapse -->
 </nav>
