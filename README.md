@@ -1,4 +1,4 @@
-farmassistant
+archeagefarmer
 =========
 
 A tool to manage farm timers in the game "ArcheAge"
