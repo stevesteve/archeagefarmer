@@ -29,3 +29,7 @@ $twigcontext = array(
 	'auth'=>array_key_exists('auth', $_SESSION)?$_SESSION['auth']:false,
 	'staticurl'=>$_CONFIG['urlbase'].'/'.$_CONFIG['staticurl'],
 	);
+
+// initial js context
+// this array is converted to a json array in base.twig
+$jscontext = array();
