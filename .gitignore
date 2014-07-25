@@ -1,0 +1,11 @@
+
+# sublime
+*.sublime-*
+
+# composer
+composer.lock
+composer.phar
+vendor/
+
+# resources
+resources/

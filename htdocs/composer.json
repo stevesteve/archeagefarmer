@@ -1,0 +1,6 @@
+{
+    "require": {
+        "twig/twig": "1.15.1",
+        "filp/whoops": "1.0.10"
+    }
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Farmassistant{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="{{ staticurl }}/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ staticurl }}/css/{{ pageroot }}.css">
+	{% block styles %}{% endblock %}
+</head>
+<body>
+	{% include 'includes/header.twig' %}
+	{% block content %}
+		this is a template
+	{% endblock %}
+	{% include 'includes/footer.twig' %}
+	<script type="text/javascript" src="{{ staticurl }}/js/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ staticurl }}/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{ staticurl }}/js/base.js"></script>
+	{% block scripts %}{% endblock %}
+</body>
+</html>
