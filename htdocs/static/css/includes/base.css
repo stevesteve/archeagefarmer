@@ -2,3 +2,11 @@
   text-align: center;
   margin-top: 100px;
 }
+
+.row-buffer {
+  margin-top: 10px;
+}
+
+.template {
+  display: none;
+}

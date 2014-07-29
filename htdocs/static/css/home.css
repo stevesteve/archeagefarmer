@@ -2,3 +2,32 @@
   text-align: center;
   margin-top: 100px;
 }
+
+.row-buffer {
+  margin-top: 10px;
+}
+
+.template {
+  display: none;
+}
+
+div.timer {
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+div.timer .name {
+  font-size: 25px;
+}
+div.timer .time-done .date {
+  font-size: 10px;
+}
+div.timer .time-done .time {
+  font-size: 20px;
+}
+div.timer .notes {
+  text-align: left;
+}
+div.timer .time-left {
+  font-size: 25px;
+}

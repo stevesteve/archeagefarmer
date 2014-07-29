@@ -1,2 +1,25 @@
 
 @import 'includes/base';
+
+div.timer {
+	margin: 10px;
+	padding: 10px;
+	border-bottom: 1px solid black;
+	.name {
+		font-size: 25px;
+	}
+	.time-done {
+		.date {
+			font-size: 10px;
+		}
+		.time {
+			font-size: 20px;
+		}
+	}
+	.notes {
+		text-align: left;
+	}
+	.time-left {
+		font-size: 25px;
+	}
+}

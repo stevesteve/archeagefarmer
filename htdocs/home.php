@@ -7,6 +7,8 @@ require 'includes/database.php';
 
 $stmt = $db->prepare('SELECT * FROM `seed` ORDER BY `name`');
 $stmt->execute();
-$twigcontext['seeds'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$seeds = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$twigcontext['seeds'] = $seeds;
+$jscontext['seeds'] = $seeds;
 
 require 'includes/render.php';
