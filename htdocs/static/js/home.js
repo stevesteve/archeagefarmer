@@ -1,8 +1,7 @@
 
 // VARIABLES
 
-var timers = loadTimers();
-
+var timers;
 var seeds = {};
 for (var i = 0; i < context.seeds.length; i++) {
 	seeds[context.seeds[i].id] = context.seeds[i];
@@ -16,20 +15,23 @@ $('#add-timer').click(function (event) {
 });
 
 // CODE
+loadTimers();
 displayTimers();
 
-setInterval(updateTimeLeft,1000);
+setInterval(updateTimeLeft,3000);
 
 // FUNCTIONS
 function loadTimers () {
 	if (localStorage.timers) {
-		return JSON.parse(localStorage.timers);
+		timers = JSON.parse(localStorage.timers);
 	} else {
-		return [];
+		timers = [];
 	}
+	sortTimers();
 }
 
-function saveTimers (timers) {
+function saveTimers () {
+	sortTimers();
 	localStorage.setItem('timers',JSON.stringify(timers));
 }
 
@@ -39,14 +41,21 @@ function addTimer (seedId,notes) {
 	}
 	var timer = {
 		'seed':seedId,
-		'starttime':moment().toString(),
-		'endtime':moment().add(seeds[seedId].growth_minutes,'m').toString(),
+		'starttime':moment().toISOString(),
+		'endtime':moment().add(seeds[seedId].growth_minutes,'m').toISOString(),
 		'notes':notes?notes:''
 	};
 	timers.push(timer);
-	
-	saveTimers(timers);
+
+	saveTimers();
 	displayTimers();
+}
+
+function sortTimers () {
+	timers.sort(function (a, b) {
+		return moment(a.endtime) - moment(b.endtime);
+	});
+	return timers;
 }
 
 function displayTimers () {
