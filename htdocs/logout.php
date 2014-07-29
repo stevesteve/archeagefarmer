@@ -5,4 +5,4 @@ $guarded = false;
 require 'includes/setup.php';
 
 session_destroy();
-header('Location: '.$_CONFIG['urlbase']);
+header('Location: '.$_CONFIG['urlbase'].'/');

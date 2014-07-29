@@ -10,7 +10,7 @@ if (!empty($_POST)) {
 	if (array_key_exists('redirect', $_GET)) {
 		header('Location: '.$_GET['redirect']);
 	} else {
-		header('Location: '.$_CONFIG['urlbase']);
+		header('Location: '.$_CONFIG['urlbase'].'/');
 	}
 	exit;
 }
