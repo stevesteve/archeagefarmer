@@ -11,6 +11,10 @@ div.timer {
 	.time-done {
 		.date {
 			font-size: 10px;
+			color: $text-gray;
+		}
+		.date.today {
+			color: $text-green;
 		}
 		.time {
 			font-size: 20px;

@@ -37,12 +37,14 @@ function addTimer (seedId,notes) {
 	if (!seedId) {
 		return;
 	}
-	timers.push({
+	var timer = {
 		'seed':seedId,
 		'starttime':moment().toString(),
 		'endtime':moment().add(seeds[seedId].growth_minutes,'m').toString(),
 		'notes':notes?notes:''
-	});
+	};
+	timers.push(timer);
+	
 	saveTimers(timers);
 	displayTimers();
 }
@@ -62,7 +64,11 @@ function displayTimers () {
 		
 		currentDom.removeClass('template');
 		currentDom.find('.name').html(seed.name);
-		currentDom.find('.time-done > .date').html(endtime.format('DD.MM.YY'));
+		var datediv = currentDom.find('.time-done > .date');
+		datediv.html(endtime.format('DD.MM.YY'));
+		if (moment().isSame(endtime,'d')) {
+			datediv.addClass('today');
+		}
 		currentDom.find('.time-done > .time').html(endtime.format('HH:mm'));
 		currentDom.find('.notes').html(timer.notes);
 		currentDom.find('.time-left').attr('data-endtime',timer.endtime);

@@ -21,6 +21,10 @@ div.timer .name {
 }
 div.timer .time-done .date {
   font-size: 10px;
+  color: #888888;
+}
+div.timer .time-done .date.today {
+  color: #00aa00;
 }
 div.timer .time-done .time {
   font-size: 20px;
