@@ -1,8 +1,8 @@
 
 // CODE
-var prefs = new Prefs();
 
 // PREFERENCES
+var prefs = new Prefs();
 function Prefs() {
 	this.init = function () {
 		this.load();
@@ -29,4 +29,8 @@ function Prefs() {
 }
 
 // UTILS
-
+function reload (ask) {
+	if (!ask||confirm('The page needs to be reloaded to apply the changes. Reload now?')) {
+		document.location.reload();
+	}
+}
