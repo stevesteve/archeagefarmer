@@ -2,6 +2,7 @@
 // VARIABLES
 
 var timers;
+var timerIdCounter = 1;
 var seeds = {};
 for (var i = 0; i < context.seeds.length; i++) {
 	seeds[context.seeds[i].id] = context.seeds[i];
@@ -12,6 +13,10 @@ for (var i = 0; i < context.seeds.length; i++) {
 $('#seed-filter').keyup(filterSeeds);
 $('#add-timer').click(function (event) {
 	addTimer($('#select-seed').val(),$('#textarea-notes').val());
+});
+$('#timers').on('click','.delete-timer',function (event) {
+	event.preventDefault();
+	removeTimer($(this).attr('data-id'));
 });
 
 // CODE
@@ -40,6 +45,7 @@ function addTimer (seedId,notes) {
 		return;
 	}
 	var timer = {
+		'id':timerIdCounter++,
 		'seed':seedId,
 		'starttime':moment().toISOString(),
 		'endtime':moment().add(seeds[seedId].growth_minutes,'m').toISOString(),
@@ -49,6 +55,16 @@ function addTimer (seedId,notes) {
 
 	saveTimers();
 	displayTimers();
+}
+function removeTimer (id) {
+	for (var i = 0; i < timers.length; i++) {
+		if (timers[i].id==id) {
+			timers.splice(i,1);
+			saveTimers();
+			displayTimers();
+			break;
+		}
+	};
 }
 
 function sortTimers () {
@@ -81,6 +97,7 @@ function displayTimers () {
 		currentDom.find('.time-done > .time').html(endtime.format('HH:mm'));
 		currentDom.find('.notes').html(timer.notes);
 		currentDom.find('.time-left').attr('data-endtime',timer.endtime);
+		currentDom.find('.delete-timer').attr('data-id',timer.id);
 		$('#timers').append(currentDom);
 	};
 
