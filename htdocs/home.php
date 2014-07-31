@@ -11,4 +11,9 @@ $seeds = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $twigcontext['seeds'] = $seeds;
 $jscontext['seeds'] = $seeds;
 
+$stmt = $db->prepare('SELECT * FROM `climate` ORDER BY `name`');
+$stmt->execute();
+$climates = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$twigcontext['climates'] = $climates;
+
 require 'includes/render.php';

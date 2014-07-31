@@ -10,3 +10,7 @@
 .template {
   display: none;
 }
+
+.no-display {
+  display: none;
+}

@@ -6,7 +6,7 @@ $_CONFIG = array(
 	'staticurl'=>'static',
 	'db'=>array(
 		'dbhost'=>'localhost',
-		'dbname'=>'farmassistant',
+		'dbname'=>'archeagefarmer',
 		'username'=>'root',
 		'password'=>'',
 		),

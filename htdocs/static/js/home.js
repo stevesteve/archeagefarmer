@@ -1,4 +1,7 @@
 
+// CONSTANTS
+var climate_growth_multi = 0.7;
+
 // VARIABLES
 
 var timers;
@@ -8,22 +11,29 @@ for (var i = 0; i < context.seeds.length; i++) {
 	seeds[context.seeds[i].id] = context.seeds[i];
 };
 
+// CODE
+loadTimers();
+displayTimers();
+
+setInterval(updateTimeLeft,3000);
+
+$('.radio-climate[value='+prefs.get('lastClimate')+']').addClass('active');
+
 // LISTENERS
 
-$('#seed-filter').keyup(filterSeeds);
-$('#add-timer').click(function (event) {
+$('#seed-filter').on('keyup',filterSeeds);
+$('#add-timer').on('click',function (event) {
 	addTimer($('#select-seed').val(),$('#textarea-notes').val());
 });
 $('#timers').on('click','.delete-timer',function (event) {
 	event.preventDefault();
 	removeTimer($(this).attr('data-id'));
 });
-
-// CODE
-loadTimers();
-displayTimers();
-
-setInterval(updateTimeLeft,3000);
+$('.radio-climate').on('click',function (event) {
+	$('.radio-climate').removeClass('active');
+	$(this).addClass('active');
+	prefs.set('lastClimate',$(this).val());
+});
 
 // FUNCTIONS
 function loadTimers () {
@@ -44,11 +54,16 @@ function addTimer (seedId,notes) {
 	if (!seedId) {
 		return;
 	}
+	var actualGrowthMinutes = 
+		$('.radio-climate.active').val()==seeds[seedId].climate ?
+		seeds[seedId].growth_minutes*climate_growth_multi :
+		seeds[seedId].growth_minutes;
+
 	var timer = {
 		'id':timerIdCounter++,
 		'seed':seedId,
 		'starttime':moment().toISOString(),
-		'endtime':moment().add(seeds[seedId].growth_minutes,'m').toISOString(),
+		'endtime':moment().add(actualGrowthMinutes,'m').toISOString(),
 		'notes':notes?notes:''
 	};
 	timers.push(timer);
