@@ -9,3 +9,6 @@ vendor/
 
 # resources
 resources/
+
+# sass makes css files unnecessary 
+*.css

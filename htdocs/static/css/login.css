@@ -14,3 +14,7 @@
 .no-display {
   display: none;
 }
+
+.clickable {
+  cursor: pointer;
+}

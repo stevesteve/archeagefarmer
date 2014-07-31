@@ -4,6 +4,12 @@ $PAGEID = 'login';
 $guarded = false;
 require 'includes/setup.php';
 
+// #@debug #@todo implement login functionality
+$_SESSION['auth'] = true;
+$_SESSION['userid'] = 1;
+header('Location: '.$_CONFIG['urlbase'].'/');
+exit;
+
 if (!empty($_POST)) {
 	$_SESSION['auth'] = true;
 	$_SESSION['userid'] = $_POST['id'];

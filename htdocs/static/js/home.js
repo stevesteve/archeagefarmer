@@ -16,6 +16,10 @@ for (var i = 0; i < context.seeds.length; i++) {
 loadTimers();
 displayTimers();
 
+if (timers.length<3) {
+	$('.collapse').collapse();
+}
+
 setInterval(updateTimeLeft,3000);
 
 $('.radio-climate[value='+prefs.get('lastClimate')+']').addClass('active');
@@ -25,6 +29,7 @@ $('.radio-climate[value='+prefs.get('lastClimate')+']').addClass('active');
 $('#seed-filter').on('keyup',filterSeeds);
 $('#add-timer').on('click',function (event) {
 	addTimer($('#select-seed').val(),$('#textarea-notes').val());
+	$('#textarea-notes').val('');
 });
 
 $('#timers').on('click','.delete-timer',function (event) {
@@ -224,7 +229,6 @@ function updateTimeLeft () {
 		timerDom = $(this).parents('.timer');
 		id = timerDom.attr('data-id');
 		timer = timerIndex[id];
-		console.log(timer);
 		seed = seeds[timer.seed];
 
 		timeleft = Math.floor(moment($(this).attr('data-endtime')).diff(moment())/60000);
